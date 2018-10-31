@@ -1,15 +1,34 @@
-.body_bg
-{
+.body_bg {
   background-color: #222d32;
 }
-.panel-title
-{
+
+.panel-title {
   height: 40px;
   line-height: 40px;
   text-align: center;
   font-size: 18px;
 }
-.mt_150
-{
+
+.mt_150 {
   margin-top: 150px;
+}
+
+.lt_aside {
+  height: 100%;
+  width: 180px;
+  background-color: #222D32;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.lt_aside .aside_top
+{
+  height: 50px;
+  line-height: 50px;
+  background-color: #367FA9;
+
+} 
+.lt_aside .aside_top a 
+{
+  color: #fff;
 }
