@@ -18,6 +18,9 @@ img {
 {
   color: #A94442;
 }
+.breadcrumb > .active a {
+  color: #777;
+}
 
 .body_bg {
   background-color: #222d32;
@@ -148,4 +151,13 @@ img {
 
 .lt_content {
   padding: 15px;
+}
+
+/* 准备两个具备宽高的容器 */
+.lt_content .echarts_left,
+.lt_content .echarts_right
+{
+  width: 48%;
+  height: 400px;
+  background-color: green;
 }
