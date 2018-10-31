@@ -118,7 +118,7 @@ img {
   padding-left: 180px;
   padding-top: 50px;
   height: 1000px;
-  background-color: pink;
+  /* background-color: pink; */
   transition: all 1s;
 }
 .lt_main.hidemenu
@@ -135,6 +135,7 @@ img {
   background-color: #3C8DBC;
   padding-left: 180px;
   transition: all 1s ;
+  z-index: 666;
 }
 .lt_topbar.hidemenu 
 {
@@ -159,5 +160,5 @@ img {
 {
   width: 48%;
   height: 400px;
-  background-color: green;
+  /* background-color: green; */
 }
