@@ -1,22 +1,24 @@
 /* 重置公共的样式 */
-a:link,
-a:visited,
-a:hover,
-a:active
-{
+
+a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
-ul 
-{
+
+ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
- img 
- {
-   display: block;
-   width: 100%;
- }
+
+img {
+  display: block;
+  width: 100%;
+}
+.red 
+{
+  color: #A94442;
+}
+
 .body_bg {
   background-color: #222d32;
 }
@@ -40,16 +42,20 @@ ul
   left: 0;
   top: 0;
   z-index: 999;
+  transition: all 1s;
 }
-.lt_aside .aside_top
+.lt_aside.hidemenu
 {
+  left: -180px;
+}
+
+.lt_aside .aside_top {
   height: 50px;
   line-height: 50px;
   background-color: #367FA9;
+}
 
-} 
-.lt_aside .aside_top a 
-{
+.lt_aside .aside_top a {
   display: block;
   text-align: center;
   line-height: 50px;
@@ -57,27 +63,27 @@ ul
   text-decoration: none;
   font-size: 20px;
 }
-.lt_aside .user  
-{
+
+.lt_aside .user {
   padding-top: 30px;
   height: 180px;
 }
-.lt_aside .user img 
-{
+
+.lt_aside .user img {
   width: 80px;
   height: 80px;
   margin: 0 auto;
   border-radius: 50%;
 }
-.lt_aside .user  p 
-{
+
+.lt_aside .user p {
   line-height: 40px;
   text-align: center;
   color: #fff;
   font-size: 18px;
 }
-.lt_aside .nav  a
-{
+
+.lt_aside .nav a {
   display: block;
   /* height: 40px; */
   line-height: 40px;
@@ -85,30 +91,39 @@ ul
   padding-left: 40px;
   border-left: 3px solid transparent;
 }
-.lt_aside .nav  a.active
-{
+
+.lt_aside .nav a.active {
   background-color: #1D1F21;
-  border-left:3px solid #069;
+  border-left: 3px solid #069;
 }
-.lt_aside .nav  a i 
-{
+
+.lt_aside .nav a i {
   margin-right: 4px;
 }
+
 /* 定制child的padding */
-.lt_aside .nav .child a
-{
-  padding-left: 60px;
+
+.lt_aside .nav .child {
   display: none;
 }
-.lt_main
-{
+
+.lt_aside .nav .child a {
+  padding-left: 60px;
+}
+
+.lt_main {
   padding-left: 180px;
-  padding-top:50px;
+  padding-top: 50px;
   height: 1000px;
   background-color: pink;
+  transition: all 1s;
 }
-.lt_main .lt_topbar
+.lt_main.hidemenu
 {
+  padding-left: 0px;
+}
+
+.lt_main .lt_topbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -116,17 +131,21 @@ ul
   height: 50px;
   background-color: #3C8DBC;
   padding-left: 180px;
+  transition: all 1s ;
 }
-.lt_topbar .icon_menu,
-.lt_topbar .icon_log_out
+.lt_topbar.hidemenu 
 {
+  padding-left: 0px;
+}
+
+.lt_topbar .icon_menu, .lt_topbar .icon_log_out {
   width: 50px;
   height: 50px;
   line-height: 50px;
   text-align: center;
   color: #fff;
 }
-.lt_content
-{
+
+.lt_content {
   padding: 15px;
 }
