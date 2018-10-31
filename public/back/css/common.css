@@ -1,5 +1,10 @@
 /* 重置公共的样式 */
-
+.table.table-bordered th,
+.table.table-bordered  td 
+{
+  text-align: center;
+  vertical-align: middle;
+}
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
