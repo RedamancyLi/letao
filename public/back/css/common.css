@@ -1,3 +1,22 @@
+/* 重置公共的样式 */
+a:link,
+a:visited,
+a:hover,
+a:active
+{
+  text-decoration: none;
+}
+ul 
+{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ img 
+ {
+   display: block;
+   width: 100%;
+ }
 .body_bg {
   background-color: #222d32;
 }
@@ -30,5 +49,53 @@
 } 
 .lt_aside .aside_top a 
 {
+  display: block;
+  text-align: center;
+  line-height: 50px;
   color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+.lt_aside .user  
+{
+  padding-top: 30px;
+  height: 180px;
+}
+.lt_aside .user img 
+{
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.lt_aside .user  p 
+{
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+}
+.lt_aside .nav  a
+{
+  display: block;
+  /* height: 40px; */
+  line-height: 40px;
+  color: #fff;
+  padding-left: 40px;
+  border-left: 3px solid transparent;
+}
+.lt_aside .nav  a.active
+{
+  background-color: #1D1F21;
+  border-left:3px solid #069;
+}
+.lt_aside .nav  a i 
+{
+  margin-right: 4px;
+}
+/* 定制child的padding */
+.lt_aside .nav .child a
+{
+  padding-left: 60px;
+  display: none;
 }
