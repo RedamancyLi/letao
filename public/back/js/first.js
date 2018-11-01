@@ -26,14 +26,66 @@ $(function () {
           onPageClicked: function (event, originalEvent, type, page) {
             //为按钮绑定点击事件 page:当前点击的按钮值
             // 更新当前页
-            currentPage=page;
+            currentPage = page;
             render();
           }
         });
       }
     })
+
+
   }
 
+  //点击按钮  让模态框显示
+  $('#addbtn').click(function () {
+    $('#addModal').modal("show");
+  });
+
+
+  // 表单校验
+  $('#form').bootstrapValidator({
+    //配置图标
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    //配置校验的字段
+    fields: {
+      categoryName:
+      {
+        //校验规则
+        validators:
+        {
+          notEmpty:
+          {
+            message: '请输入一级分类'
+          }
+        }
+      }
+    }
+
+  })
+  //阻止默认的提交 使用ajax提交
+  $("#form").on('success.form.bv', function (e) {
+    e.preventDefault();
+    //使用ajax提交逻辑
+    $.ajax({
+      type: "post",
+      url: "/category/addTopCategory",
+      data: $("#form").serialize(),
+      dataType: "json",
+      success: function (info) {
+        console.log(info);
+          //关闭模态框
+          $("#addModal").modal("hide");
+          //重新渲染第一页
+          render();
+          //重置表单按钮
+          $('#form').data("bootstrapValidator").resetForm(true);
+      }
+    })
+  });
 });
 
 
