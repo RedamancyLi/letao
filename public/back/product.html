@@ -38,14 +38,14 @@
 						<span>分类管理</span>
 					</a>
 					<!-- 二级列表 -->
-					<div class="child">
+					<div class="child" style="display: block">
 						<a href="first.html">一级分类</a>
 						<a href="second.html">二级分类</a>
 					</div>
 
 				</li>
 				<li>
-					<a class="active" href="product.html">
+					<a href="product.html" class="active">
 						<i class="glyphicon glyphicon-tags"></i>
 						<span>商品管理</span>
 					</a>
@@ -74,43 +74,144 @@
 				</li>
 				<li class="active">
 					<a href="#">商品管理</a>
-        </li>
+				</li>
 
 			</ol>
+
+			<button class="btn btn-default mb_20" id="addbtn">添加分类</button>
+
+			<!-- 表格 -->
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>商品名称</th>
+						<th>商品描述</th>
+						<th>商品库存</th>
+						<th>商品尺寸</th>
+						<th>商品状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+
+			<!-- 准备分页父容器 -->
+			<div class="text-right">
+				<ul id="paginator"></ul>
+			</div>
 		</div>
 	</div>
-	<!-- 模态框 -->
-	<div id="logoutModal" class="modal fade" tabindex="-1">
-		<div class="modal-dialog modal-sm">
+
+	<!-- 添加分类的模态框 -->
+	<div id="addModal" class="modal fade" tabindex="-1">
+		<div class="modal-dialog ">
 			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span>&times;</span>
-					</button>
-					<h4 class="modal-title">温馨提示</h4>
-				</div>
-				<div class="modal-body">
-					<p class="red">
-						<i class="glyphicon glyphicon-thumbs-up"></i> 您确定要退出后台管理系统吗？</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
-				</div>
+				<form id="form">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span>&times;</span>
+						</button>
+						<h4 class="modal-title">添加分类</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span class="dropdownText">请选择二级分类</span>
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+
+								</ul>
+								<!-- 二级分类隐藏域 -->
+								<input type="hidden" name="brandId" >	</div>
+								<!-- 上下架 -->
+								<input type="hidden" name="statu" value="1">
+
+						</div>
+						<div class="form-group">
+							<input type="text" name="proName" class="form-control" placeholder="请输入商品名称">
+						</div>
+						<div class="form-group">
+							<textarea name="proDesc" class="form-control" rows="3" placeholder="请输入商品描述"></textarea>
+							<!-- <input type="text"  class="form-control" > -->
+						</div>
+						<div class="form-group">
+							<input type="text" name="num" class="form-control" placeholder="请输入商品库存">
+						</div>
+						<div class="form-group">
+							<input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
+						</div>
+						<div class="form-group">
+							<input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
+						</div>
+						<div class="form-group">
+							<input type="text" name="price" class="form-control" placeholder="请输入商品现价">
+						</div>
+						<div class="form-group">
+							<!-- <button type="button" class="btn btn-default">上传图片</button> -->
+							<label for="fileupload" class="btn btn-default">上传图片</label>
+							<input name="pic1" data-url="/product/addProductPic" type="file"
+							 id="fileupload" style="display: none;" multiple>
+						</div>
+						<div class="form-group" id="imgBox">
+							<!-- <img src="images/none.png" alt=""> -->
+						 <input type="hidden" name="picStatus">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="submit" class="btn btn-primary" id="addfirst">添加</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
 
 
+	<!-- 准备模板引擎 -->
+	<script type="txt/html" id="producttmp">
+		{{each rows v i}}
+		<tr>
+			<td>{{i+1+(page-1)*size}}</td>
+			<td>{{v.proName}}</td>
+			<td>{{v.proDesc}}</td>
+			<td>{{v.num}}</td>
+			<td>{{v.size}}</td>
+			<td>已上架</td>
+			<td>
+				<button class="btn btn-danger">下架</button>
+			</td>
+		</tr>
+		{{/each}}
 
+	</script>
+
+	<!-- 准备模板引擎 -->
+	<script type="txt/html" id="productlist">
+	  {{each rows v i}}
+		<li><a href="#" data-id="{{v.id}}">{{v.brandName}}</a></li>
+		{{/each}}
+	 
+	 </script>
 
 	<script src="lib/jquery/jquery.min.js"></script>
+	<!-- 文件上传的包 -->
+	<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+	<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.js"></script>
 	<script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 	<script src="lib/nprogress/nprogress.js"></script>
+	<script src="lib/artTemplate/template-web.js"></script>
+	<!-- 引入分页插件 -->
+	<script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
 	<!-- 判断是否登陆 -->
 	<script src="js/checkLogin.js"></script>
 	<script src="js/common.js"></script>
+	<script src="js/product.js"></script>
 </body>
 
 </html>
